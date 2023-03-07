@@ -1,4 +1,4 @@
-CREATE DATABASE IN MYSQL:
+## Create DataBase in MySQL:
 
     CREATE TABLE `dbasecrud`.`usuarios` (
       `id` INT NOT NULL AUTO_INCREMENT,
@@ -18,6 +18,10 @@ CREATE DATABASE IN MYSQL:
   
   
   
-Important: 
+## Important: 
  1. There are conditions within the code that restrict some functionality. Check the console for information.
  2. When exporting the information, the csv file is saved in the location of the project.
+ 
+ ## CRUD Images
+ 
+ ![crud](https://github.com/AndresFF10/CRUD2/img/1.png)
