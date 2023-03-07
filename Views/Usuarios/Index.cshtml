@@ -1,0 +1,106 @@
+﻿@model IEnumerable<CRUD2.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h1>Users</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+    <a asp-action="ExportCSV" class="btn btn-success">Export CSV</a>
+</p>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr style="text-align: center;">
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WorkingStartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Picture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rol)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </th>
+                <th>Options</th>
+                <th>Calculate Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr style="text-align: center;">
+                <td style="justify-content: center;">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="justify-content: center;">
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td style="justify-content: center;">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td style="justify-content: center;">
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.WorkingStartDate)*@
+                    @Html.Raw(item.WorkingStartDate.ToShortDateString())
+                </td>
+                <td>
+                    <img src="@Url.Action("ConvertirImagen", "Usuarios", new {id=item.Id})" width="100" height="100"/>
+                </td>
+                <td id="ejem">
+                    @*@Html.DisplayFor(modelItem => item.Rol)*@
+                    @if (item.Rol == "1") {  
+                            @Html.Raw("Worker");
+                        }else if(item.Rol == "2"){
+                            @Html.Raw("Specialist"); 
+                        }else if(item.Rol == "3"){
+                            @Html.Raw("Manager"); 
+                        }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning btn-sm" asp-route-id="@item.Id">Edit</a> 
+                    <a asp-action="Details" class="btn btn-primary btn-sm" asp-route-id="@item.Id">Details</a> 
+                    <a asp-action="Delete" class="btn btn-danger btn-sm" asp-route-id="@item.Id">Delete</a>
+                    
+                </td>
+                <td>
+                    <a asp-action="CalculateSalary" class="btn btn-success btn-sm" asp-route-id="@item.Id"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
+                          <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z"/>
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/js/site.js"></script>
