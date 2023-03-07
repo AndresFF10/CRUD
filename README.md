@@ -24,4 +24,4 @@
  
  ## CRUD Images
  
- ![crud](https://github.com/AndresFF10/CRUD2/img/1.png)
+ ![crud](https://github.com/AndresFF10/CRUD2/blob/main/img/1.PNG)
