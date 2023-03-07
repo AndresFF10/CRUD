@@ -18,3 +18,6 @@ CREATE TABLE `dbasecrud`.`usuarios` (
   
   
   
+Important: 
+ 1. There are conditions within the code that restrict some functionality. Check the console for information.
+ 2. When exporting the information, the csv file is saved in the location of the project.
